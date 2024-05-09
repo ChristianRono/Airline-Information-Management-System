@@ -12,5 +12,5 @@ class Airplane(models.Model):
     )
     rating = models.CharField(max_length=10,choices=CHOICES)
 
-    def __str_(self):
+    def __str__(self):
         return f"{self.manufacturer} {str(self.numser)}"
