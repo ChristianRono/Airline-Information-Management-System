@@ -14,7 +14,7 @@ class Staff(models.Model):
         ('b','B'),
         ('c','C'),
     )
-    rating = models.CharField(max_length=10,choices=CHOICES)
+    rating = models.CharField(max_length=10,choices=CHOICES,blank=True)
     is_pilot = models.BooleanField(default=False)
 
     def __str__(self):
