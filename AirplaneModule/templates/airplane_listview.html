@@ -1,26 +1,28 @@
 {% extends "airplane_base.html" %}
 {% block title %}Airplane Module{% endblock %}
 {% block content %}
-<a href="{% url 'airplane add' %}">Add New</a>
-<table>
-    <tr>
-        <th>Airplane Number</th>
-        <th>Manufacturer</th>
-        <th>Model</th>
-        <th>Rating</th>
-        <th>Actions</th>
-    </tr>
-    {% for airplane in airplanes %}
-    <tr>
-        <td>{{ airplane.numser }}</td>
-        <td>{{ airplane.manufacturer }}</td>
-        <td>{{ airplane.model }}</td>
-        <td>{{ airplane.get_rating_display }}</td>
-        <td>
-            <a href="view/{{ airplane.id }}">Detail View</a>
-            <a href="delete/{{ airplane.id }}">Delete Item</a>
-        </td>
-    </tr>
-    {% endfor %}
-</table>
+<div class="container">
+    <a class="btn btn-info" href="{% url 'airplane add' %}">Add New</a>
+    <table class="table">
+        <tr>
+            <th>Airplane Number</th>
+            <th>Manufacturer</th>
+            <th>Model</th>
+            <th>Rating</th>
+            <th>Actions</th>
+        </tr>
+        {% for airplane in airplanes %}
+        <tr>
+            <td>{{ airplane.numser }}</td>
+            <td>{{ airplane.manufacturer }}</td>
+            <td>{{ airplane.model }}</td>
+            <td>{{ airplane.get_rating_display }}</td>
+            <td>
+                <a class="btn btn-info" href="view/{{ airplane.id }}">Detail View</a>
+                <a class="btn btn-danger" href="delete/{{ airplane.id }}">Delete Item</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
 {% endblock %}

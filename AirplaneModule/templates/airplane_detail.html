@@ -1,11 +1,14 @@
 {% extends "airplane_base.html" %}
+{% load crispy_forms_tags %}
 {% block title %}Airplane Module{% endblock %}
 {% block content %}
-<h2>Airplane DetailView</h2>
-<form action="{% url 'airplane detailview' id=airplane.id %}" method="POST">
-    {% csrf_token %}
-    <input type="hidden" value="{{ airplane.id }}" name='id'>
-    {{ form }}
-    <input type="submit" value="Submit">
-</form>
+<div class="container">
+    <h2>Airplane DetailView</h2>
+    <form action="{% url 'airplane detailview' id=airplane.id %}" method="POST">
+        {% csrf_token %}
+        <input type="hidden" value="{{ airplane.id }}" name='id'>
+        {{ form | crispy }}
+        <input class="btn btn-info" type="submit" value="Submit">
+    </form>
+</div>
 {% endblock %}

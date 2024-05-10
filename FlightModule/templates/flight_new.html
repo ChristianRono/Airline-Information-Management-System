@@ -1,0 +1,22 @@
+{% extends 'flight_base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}Flight Module{% endblock %}
+{% block content %}
+<div class='container'>
+    <h2>Flight Add New</h2>
+    {% if messages %}
+    {% for message in messages %}
+    <div{% if message.tags %} class="{{ message.tags }}"{% endif %}>
+        {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}Important: {% endif %}
+        {{ message }}
+    </div>
+    {% endfor %}
+    {% endif %}
+    <form action="{% url 'flight add' %}" method="POST">
+        {% csrf_token %}
+        {{ form | crispy }}
+        </br>
+        <input class="btn btn-info" type="submit" value="Submit">
+    </form>
+</div>
+{% endblock %}

@@ -1,10 +1,15 @@
 {% extends 'city_base.html' %}
+{% load crispy_forms_tags %}
 {% block title %}City Module{% endblock %}
 {% block content %}
-<h2>City Add New</h2>
-<form action="{% url 'city add' %}" method="POST">
-    {% csrf_token %}
-    {{ form }}
-    <input type="submit" value="Submit">
-</form>
+<div class='container'>
+    <div class="col-md-6">
+        <h2>City Add New</h2>
+        <form action="{% url 'city add' %}" method="POST">
+            {% csrf_token %}
+            {{ form | crispy }}
+            <input class="btn btn-info" type="submit" value="Submit">
+        </form>
+    </div>
+</div>
 {% endblock %}

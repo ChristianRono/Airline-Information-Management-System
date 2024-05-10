@@ -1,0 +1,40 @@
+{% extends "flight_base.html" %}
+{% block title %}Flight Module{% endblock %}
+{% block content %}
+<div class="container">
+    <a class="btn btn-info" href="{% url 'flight add' %}">Add New</a>
+    <table class="table">
+        <tr>
+            <th>Flight Number</th>
+            <th>Origin</th>
+            <th>Destination</th>
+            <th>Stops</th>
+            <th>Date</th>
+            <th>Arrival Time</th>
+            <th>Departure Time</th>
+            <th>Airplane</th>
+            <th>Actions</th>
+        </tr>
+        {% for flight in flights %}
+        <tr>
+            <td>{{ flight.flight_number }}</td>
+            <td>{{ flight.origin }}</td>
+            <td>{{ flight.destination }}</td>
+            <td>
+                {% for stop in flight.stops.all %}
+                {{ stop.name }},
+                {% endfor %}
+            </td>
+            <td>{{ flight.date }}</td>
+            <td>{{ flight.arrival_time }}</td>
+            <td>{{ flight.departure_time }}</td>
+            <td>{{ flight.airplane.manufacturer }} {{ flight.airplane.model }}</td>
+            <td>
+                <a class="btn btn-info" href="view/{{ flight.id }}">View/Edit</a>
+                <a class="btn btn-danger" href="delete/{{ flight.id }}">Delete Item</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}

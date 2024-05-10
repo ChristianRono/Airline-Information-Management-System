@@ -1,10 +1,13 @@
 {% extends 'airplane_base.html' %}
+{% load crispy_forms_tags %}
 {% block title %}Airplane Module{% endblock %}
 {% block content %}
-<h2>Airplane Add New</h2>
-<form action="{% url 'airplane add' %}" method="POST">
-    {% csrf_token %}
-    {{ form }}
-    <input type="submit" value="Submit">
-</form>
+<div class="container">
+    <h2>Airplane Add New</h2>
+    <form action="{% url 'airplane add' %}" method="POST">
+        {% csrf_token %}
+        {{ form | crispy }}
+        <input class="btn btn-info" type="submit" value="Submit">
+    </form>
+</div>
 {% endblock %}

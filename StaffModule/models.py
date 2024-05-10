@@ -18,4 +18,6 @@ class Staff(models.Model):
     is_pilot = models.BooleanField(default=False)
 
     def __str__(self):
-        return f"{self.surname}, {self.name}"
+        status = "Pilot" if self.is_pilot else "Crew"
+        rating = ",Rating:"+self.get_rating_display() if self.rating else ''
+        return f"{self.surname}, {self.name}. " + status + rating

@@ -22,6 +22,6 @@ urlpatterns = [
     path('airplane/',include('AirplaneModule.urls')),
     path('city/',include('CitiesModule.urls')),
     path('flight/',include('FlightModule.urls')),
-    path('passenger/',include('PassengersModule.urls')),
     path('staff/',include('StaffModule.urls')),
+    path('',include('PassengersModule.urls')),
 ]
