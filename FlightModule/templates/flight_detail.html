@@ -1,0 +1,11 @@
+{% extends "flight_base.html" %}
+{% block title %}Flight Module{% endblock %}
+{% block content %}
+<h2>Flight DetailView</h2>
+<form action="{% url 'flight detailview' id=flight.id %}" method="POST">
+    {% csrf_token %}
+    <input type="hidden" value="{{ flight.id }}" name='id'>
+    {{ form }}
+    <input type="submit" value="Submit">
+</form>
+{% endblock %}

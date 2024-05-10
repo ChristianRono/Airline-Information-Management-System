@@ -1,0 +1,20 @@
+{% extends "city_base.html" %}
+{% block title %}City Module{% endblock %}
+{% block content %}
+<a href="{% url 'city add' %}">Add New</a>
+<table>
+    <tr>
+        <th>City</th>
+        <th>Actions</th>
+    </tr>
+    {% for city in cities %}
+    <tr>
+        <td>{{ city.name }}</td>
+        <td>
+            <a href="view/{{ city.id }}">Detail View</a>
+            <a href="delete/{{ city.id }}">Delete Item</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

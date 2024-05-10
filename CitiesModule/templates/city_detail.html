@@ -1,0 +1,11 @@
+{% extends "city_base.html" %}
+{% block title %}City Module{% endblock %}
+{% block content %}
+<h2>City DetailView</h2>
+<form action="{% url 'city detailview' id=city.id %}" method="POST">
+    {% csrf_token %}
+    <input type="hidden" value="{{ city.id }}" name='id'>
+    {{ form }}
+    <input type="submit" value="Submit">
+</form>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends "passenger_base.html" %}
+{% block title %}Passenger Module{% endblock %}
+{% block content %}
+<a href="{% url 'passenger add' %}">Add New</a>
+<table>
+    <tr>
+        <th>Surname</th>
+        <th>Name</th>
+        <th>Address</th>
+        <th>Phone</th>
+        <th>Actions</th>
+    </tr>
+    {% for passenger in passengers %}
+    <tr>
+        <td>{{ passenger.surname }}</td>
+        <td>{{ passenger.name }}</td>
+        <td>{{ passenger.address }}</td>
+        <td>{{ passenger.phone }}</td>
+        <td>
+            <a href="view/{{ passenger.id }}">Detail View</a>
+            <a href="delete/{{ passenger.id }}">Delete Item</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

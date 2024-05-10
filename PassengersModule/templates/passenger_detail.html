@@ -1,0 +1,11 @@
+{% extends "passenger_base.html" %}
+{% block title %}Passenger Module{% endblock %}
+{% block content %}
+<h2>Passenger DetailView</h2>
+<form action="{% url 'passenger detailview' id=passenger.id %}" method="POST">
+    {% csrf_token %}
+    <input type="hidden" value="{{ passenger.id }}" name='id'>
+    {{ form }}
+    <input type="submit" value="Submit">
+</form>
+{% endblock %}
