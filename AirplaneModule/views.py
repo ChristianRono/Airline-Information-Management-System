@@ -1,17 +1,18 @@
 from django.shortcuts import render,redirect
-from django.views.generic import ListView,DetailView
 
 from AirplaneModule.models import Airplane
 
 # Create your views here.
 
-class AirplaneListView(ListView):
-    model = Airplane
-    context_object_name = "airplanes"
-    template_name = "airplane_listview.html"
+def index(request):
+    airplanes = Airplane.objects.all()
 
-class AirplaneDetailView(DetailView):
-    model = Airplane
+    return render(request,'airplane_listview.html',{'airplanes':airplanes})
+
+def detail_view(request,id):
+    airplane = Airplane.objects.get(id=id)
+
+    return render(request,'airplane_detail.html',{'airplane':airplane})
 
 def delete(request,id):
     airplane = Airplane.objects.get(id=id)

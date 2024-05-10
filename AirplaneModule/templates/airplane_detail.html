@@ -1,5 +1,9 @@
 {% extends "airplane_base.html" %}
 {% block title %}Airplane Module{% endblock %}
 {% block content %}
-
+<h3>Airplane Details</h3>
+<p>{{ airplane.numser }}</p>
+<p>{{ airplane.manufacturer }}</p>
+<p>{{ airplane.model }}</p>
+<p>{{ airplane.get_rating_display }}</p>
 {% endblock %}
