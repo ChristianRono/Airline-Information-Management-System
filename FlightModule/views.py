@@ -37,7 +37,7 @@ def add_new(request):
 
 def detail_view(request,id):
     if request.method == "POST":
-        flight =Flight.objects.get(id=request.POST['id'])
+        flight = Flight.objects.get(id=request.POST['id'])
         form = FlightForm(request.POST,instance=flight)
         if form.is_valid():
             crew = form.cleaned_data['crew']
