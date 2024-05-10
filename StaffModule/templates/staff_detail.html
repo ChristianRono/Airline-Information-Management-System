@@ -1,11 +1,23 @@
 {% extends "staff_base.html" %}
+{% load crispy_forms_tags %}
 {% block title %}Staff Module{% endblock %}
 {% block content %}
-<h2>Staff DetailView</h2>
-<form action="{% url 'staff detailview' id=staff.id %}" method="POST">
-    {% csrf_token %}
-    <input type="hidden" value="{{ staff.id }}" name='id'>
-    {{ form }}
-    <input type="submit" value="Submit">
-</form>
+<div  class="container">
+    <br/>
+    {% if messages %}
+    {% for message in messages %}
+    <div{% if message.tags %} class="alert alert-{{ message.tags }}"{% endif %}>
+        {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}Important: {% endif %}
+        {{ message }}
+    </div>
+    {% endfor %}
+    {% endif %}
+    <h2>Staff DetailView</h2>
+    <form action="{% url 'staff detailview' id=staff.id %}" method="POST">
+        {% csrf_token %}
+        <input type="hidden" value="{{ staff.id }}" name='id'>
+        {{ form | crispy }}
+        <input class="btn btn-info" type="submit" value="Submit">
+    </form>
+</div>
 {% endblock %}
