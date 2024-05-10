@@ -1,9 +1,11 @@
 {% extends "airplane_base.html" %}
 {% block title %}Airplane Module{% endblock %}
 {% block content %}
-<h3>Airplane Details</h3>
-<p>{{ airplane.numser }}</p>
-<p>{{ airplane.manufacturer }}</p>
-<p>{{ airplane.model }}</p>
-<p>{{ airplane.get_rating_display }}</p>
+<h2>Airplane DetailView</h2>
+<form action="{% url 'airplane detailview' id=airplane.id %}" method="POST">
+    {% csrf_token %}
+    <input type="hidden" value="{{ airplane.id }}" name='id'>
+    {{ form }}
+    <input type="submit" value="Submit">
+</form>
 {% endblock %}

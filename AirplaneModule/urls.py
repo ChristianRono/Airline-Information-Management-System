@@ -1,9 +1,10 @@
 from django.urls import path
 
-from AirplaneModule.views import AirplaneListView,AirplaneDetailView,delete
+from AirplaneModule.views import index,detail_view,delete,add_new
 
 urlpatterns = [
+    path('add/', name='airplane add', view=add_new),
     path('delete/<int:id>', name='airplane delete', view=delete),
-    path('view/<int:pk>', name='airplane detailview', view=AirplaneDetailView.as_view()),
-    path('', name='airplane listview', view=AirplaneListView.as_view()),
+    path('view/<int:id>', name='airplane detailview', view=detail_view),
+    path('', name='airplane listview', view=index),
 ]

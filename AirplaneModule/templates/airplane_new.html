@@ -1,0 +1,10 @@
+{% extends 'airplane_base.html' %}
+{% block title %}Airplane Module{% endblock %}
+{% block content %}
+<h2>Airplane Add New</h2>
+<form action="{% url 'airplane add' %}" method="POST">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" value="Submit">
+</form>
+{% endblock %}
